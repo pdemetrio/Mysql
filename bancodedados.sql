@@ -19,6 +19,25 @@ create table pessoas (
     
 -- Inserindo Dados na Tabela
 
+-- Não precisa colocar o campo 'id' porque ele é chave primaria, ou seja o sistema vai colocar um numero automaticamente para ele.
+insert into pessoas
+-- (nome, nascimento, sexo, peso, altura, nacionalidade)
+(id, nome, nascimento, sexo, peso, altura, nacionalidade)
+values
+(default, 'Paulo', '1982-11-26', 'M', '80.5', '1.68', 'Brasil'),
+(default, 'Ricardo', '1982-01-17', 'M', '100.2', '1.85', default),
+(default,'Rosi', '1989-03-07', 'F', '49', '1.63', default);
+
+-- ('Godofredo', '1984-01-02', 'M', '78.5', '1.83', 'Brasil'),
+-- ('Maria', '1999-12-30', 'F', '55.2', '1.65', 'Portugal'),
+-- (default,'Creuza', '1920-12-30', 'F', '58.5', '1.63', default);
+
+-- posso simplificar caso eu não altere a posição dos nomes com o comando
+-- insert into pessoas values
+-- (default,'Adalgiza', '1930-11-02', 'F', '63.2', '1.75', 'Irlanda');
+
+select * from pessoas;
+
 
     
     
