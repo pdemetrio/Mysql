@@ -36,8 +36,32 @@ values
 -- insert into pessoas values
 -- (default,'Adalgiza', '1930-11-02', 'F', '63.2', '1.75', 'Irlanda');
 
-select * from pessoas;
+
+-- Alterar tabela
 
 
+desc pessoas; -- comando para descrever a estrutura da tabela
+alter table pessoas rename to gafanhotos; -- comando para alterar o nome da tabela.
+
+alter table pessoas add column profissao varchar(10); -- comando para adcionar coluna na tabela.
+alter table pessoas drop column profissao; -- comando para eliminar uma coluna da tabela.
+alter table pessoas add column profissao varchar(10) after nome; -- comando para adcionar coluna na tabela e escolher a posição.
+alter table pessoas add column codigo int first; -- comando para colocar tabela na primeira posição.
+UPDATE pessoas SET profissao = ' ' WHERE profissao IS NULL; -- comando para colocar ' ' como default
+alter table pessoas modify column profissao varchar(20) not null default ' '; -- comando para alterar a estrutura de definição.
+alter table pessoas change column profissao prof varchar(20); -- modificar o nome da coluna, aqui no caso de profissao para prof.
+
+-- VAMOS CRIAR UMA OUTRA TABELA COM ALGUMAS CONSTRAINTS NOVAS.
+
+create table if not exists cursos ( -- criar tabela so se não existir
+	nome varchar(30) not null unique, -- unique não é chave primaria, mas não vai deixar colocar dois cursos com o mesmo nome.
+    descricao text, -- text é uma descrição, é para textos longos.
+    carga int unsigned, -- unsigned significa sem sinal vai economizar 1 bit para cada registro que tem a carga registrada.
+    totaulas int unsigned,
+    ano year default '2016' -- se não colocar o ano, o default vai ser 2016.
+    ) default charset = utf8mb4;
+    alter table cursos add column idcurso int FIRST; -- adcionar o idcurso poir esqueci, no primeiro campo da tabela.
+    alter table cursos add primary key(idcurso); -- colocar primary key na tabela idcurso.
+    desc cursos;
     
     
