@@ -36,7 +36,8 @@ values
 -- insert into pessoas values
 -- (default,'Adalgiza', '1930-11-02', 'F', '63.2', '1.75', 'Irlanda');
 
-
+select * from gafanhotos;
+update gafanhotos set nome = 'Aline', nascimento = '1982-10-31', sexo = 'F', peso = '49', altura = '1.67' where id = 2; -- alterar a linha 2 para aline.
 -- Alterar tabela
 
 
@@ -63,5 +64,46 @@ create table if not exists cursos ( -- criar tabela so se não existir
     alter table cursos add column idcurso int FIRST; -- adcionar o idcurso poir esqueci, no primeiro campo da tabela.
     alter table cursos add primary key(idcurso); -- colocar primary key na tabela idcurso.
     desc cursos;
+
+-- Manipulando registros
+
+-- Desativar a opção STRICT_TRANS_TABLES
+SET @@GLOBAL.sql_mode = 'NO_ENGINE_SUBSTITUTION';
+SET @@SESSION.sql_mode = 'NO_ENGINE_SUBSTITUTION';
+
+INSERT INTO cursos (idcurso, nome, descricao, carga, totaulas, ano) VALUES
+('1','Mysql', 'Curso de Mysql com Guanabara.', 40, 20, 2023),
+('2','HTML5', 'Aprenda a criar páginas web usando HTML e CSS.', 60, 30, 2018),
+('3','JavaScript', 'Explore conceitos avançados de JavaScript para desenvolvimento web.', 50, 25, 2022),
+('4','Big Data', 'Curso abrangente sobre manipulação de grande quantidade de dados.', 45, 22, 2019),
+('5','Python para Ciência de Dados', 'Utilize Python para análise de dados e machine learning.', 55, 28, 2021),
+('6','Desenvolvimento web', 'Construa aplicativos móveis usando React Native.', 70, 35, 2019),
+('7','Inteligência Artificial', 'Curso introdutório sobre IA e suas aplicações.', 60, 30, 2023),
+('8','Segurança da Informação', 'Aprenda práticas de segurança para proteger sistemas e dados.', 50, 25, 2022),
+('9','DevOps e Automação', 'Curso abordando práticas DevOps e automação de processos.', 55, 28, 2022),
+('10','Desenvolvimento de Games', 'Crie jogos 2D e 3D utilizando a plataforma Unity.', 65, 32, 2023);
+
+-- atualizar o nome da linha, quando fhouver um erro
+
+update cursos set nome = 'HTML5' where idcurso = 1;
+update cursos set nome = 'Algoritmos' where idcurso = 2;
+update cursos set nome = 'PHP', ano = '2015' where idcurso = 4;
+update cursos set nome = 'Java', carga = '40',  ano = '2015' where idcurso = 5 limit 1; -- limit esse comando limita que a alteração seja posta a apenas 1 linha.
+update cursos set descricao = 'Aprenda java rápido mané' where idcurso = 5 limit 1;
+update cursos set descricao = 'caralho' where idcurso = 9;
+update cursos set descricao = 'caralho' where idcurso = 10;
+
+-- Apagar registros
+delete from cursos where idcurso = '8';
+delete from cursos where descricao = 'caralho' limit 2;
+
+-- Apagar todos os registros de uma vez só
+truncate cursos;
+
+select * from cursos;
+
+
+    
+
     
     
