@@ -36,6 +36,9 @@ values
 -- insert into pessoas values
 -- (default,'Adalgiza', '1930-11-02', 'F', '63.2', '1.75', 'Irlanda');
 
+-- apagar linhas de nomes duplicados
+delete from gafanhotos where id = '11';
+
 select * from gafanhotos;
 update gafanhotos set nome = 'Aline', nascimento = '1982-10-31', sexo = 'F', peso = '49', altura = '1.67' where id = 2; -- alterar a linha 2 para aline.
 -- Alterar tabela
@@ -99,8 +102,19 @@ delete from cursos where descricao = 'caralho' limit 2;
 
 -- Apagar todos os registros de uma vez só
 truncate cursos;
-
+show tables;
 select * from cursos;
+select * from gafanhotos;
+describe gafanhotos;
+describe cursos;
+
+drop database cadastro;
+
+-- comando para jogar no console para descobrir quais comandos foram usados.
+-- show create table cursos;
+-- show create database cadastro;
+
+
 
 
     
